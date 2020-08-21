@@ -1,0 +1,10 @@
+@import 'src/assets/sass/variables.scss';
+
+.Chat {
+  .chat-maessage {
+    padding: 20px;
+    height: calc(100vh - 248px);
+    background-size: cover;
+    background-position: center;
+  }
+}
