@@ -26,13 +26,6 @@ const BoxAgents = () => {
         name: 'Tiago Nunes',
         description: 'Manaus-AM'
       }
-    },
-    {
-      count: '3589',
-      user: {
-        name: 'Tiago Nunes',
-        description: 'Manaus-AM'
-      }
     }
   ]
 

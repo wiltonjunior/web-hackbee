@@ -1,7 +1,7 @@
 @import 'src/assets/sass/variables.scss';
 
-.Report {
-  .HeaderReport {
+.Users {
+  .HeaderUsers {
     display: flex;
     padding: 20px;
     padding-top: 0;
@@ -13,11 +13,6 @@
         color: $wine;
         font-size: 2rem;
         font-family: $font-semibold;
-      }
-    }
-    .header-actions{
-      button{
-        background-color: $white;
       }
     }
   }

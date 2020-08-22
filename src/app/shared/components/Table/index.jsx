@@ -11,8 +11,12 @@ const Table = (props) => {
   const getRow = (object) => {
     return (
       <tr>
-        {headers.map(({ field }, index) => {
-          return <th key={index}>{object[field]}</th>
+        {headers.map(({ field, component }, index) => {
+          if (component) {
+            return <th key={index}>{component()}</th>
+          } else {
+            return <th key={index}>{object[field]}</th>
+          }
         })}
       </tr>
     )

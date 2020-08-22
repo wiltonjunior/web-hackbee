@@ -8,18 +8,22 @@ import './styles.scss'
 const BoxChannel = () => {
   const array = [
     {
+      icon: 'dot',
       title: 'Esperando',
       content: () => <div className="number">180</div>
     },
     {
+      icon: 'comment',
       title: 'Em atendimento',
       content: () => <div className="number">85</div>
     },
     {
+      icon: 'task',
       title: 'Finalizados',
       content: () => <div className="number">254</div>
     },
     {
+      icon: 'clock',
       title: 'TME e TMA',
       content: () => (
         <div className="time">

@@ -40,3 +40,4 @@ export default [
         tma: '00:15:40',
     }
 ]
+

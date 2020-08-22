@@ -1,6 +1,6 @@
 @import 'src/assets/sass/variables.scss';
 
-.Chat {
+.Users {
   .CardClient {
     width: 100%;
     height: 100%;
@@ -15,8 +15,8 @@
       .cardclient-avatar {
         border-radius: 20px;
         img {
-          width: 160px;
-          height: 160px;
+          width: 180px;
+          height: 180px;
         }
       }
       .cardclient-description {
@@ -35,19 +35,25 @@
       }
     }
     .cardclient-main {
-      .cardclient-item {
-        margin-top: 20px;
-        h4 {
-          margin: 0;
-          color: $title;
-          font-size: 0.9rem;
-          font-weight: bold;
-        }
-        p {
-          color: $subtitle;
-          font-size: 1rem;
+      .cardclient-main-item {
+        .Input {
+          margin-bottom: 20px;
+          .MuiInputBase-input {
+            font-size: 20px;
+          }
+          .MuiInputLabel-formControl {
+            font-size: 15px;
+            color: $title;
+            font-family: $font-semibold;
+          }
+          .MuiInputLabel-shrink {
+            font-size: 20px;
+          }
         }
       }
+    }
+    .cardclient-footer{
+      text-align: center;
     }
   }
 }

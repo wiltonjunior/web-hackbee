@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import clsx from 'clsx'
 import Translate, { dict } from '@components/Translate'
 
+import Add from './components/Add'
 import File from './components/File'
 import Select from './components/Select'
 import TextArea from './components/TextArea'
@@ -62,16 +63,17 @@ const Input = (props) => {
 
   const inputProps = () => {
     let {
-      readOnly,
-      disabled,
-      shrink,
-      placeholder,
       icon,
       error,
+      shrink,
+      disabled,
+      readOnly,
       helperText,
       value = '',
+      placeholder,
       endAdornment,
-      startAdornment
+      startAdornment,
+      variant = 'outlined',
     } = props
 
     const autoComplete = 'new-password'
@@ -94,7 +96,7 @@ const Input = (props) => {
       error,
       autoComplete,
       label: label(),
-      variant: 'outlined',
+      variant,
       handleChange: onChange,
       InputProps: InputProps,
       InputLabelProps: InputLabelProps,
@@ -110,6 +112,8 @@ const Input = (props) => {
         return <Autocomplete {...inputProps()} />
       case 'file':
         return <File {...inputProps()} />
+      case 'add':
+        return <Add {...inputProps()} />
       case 'select':
         return <Select {...inputProps()} />
       case 'date':

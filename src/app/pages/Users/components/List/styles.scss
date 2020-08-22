@@ -1,15 +1,9 @@
 @import 'src/assets/sass/variables.scss';
 
-.Report {
+.Users {
   .List {
     padding: 20px;
     border-radius: 20px;
     background: $grey-secondary;
-    .list-main {
-      .Table {
-        height: 290px;
-        overflow-y: scroll;
-      }
-    }
   }
 }

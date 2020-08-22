@@ -18,7 +18,12 @@
       }
       .chard-channel-main {
         display: flex;
+        position: relative;
         align-items: center;
+        .chard-channel-icon{
+          right: 0;
+          position: absolute;
+        }
         .number {
           font-size: 48px;
           color: #512b58;

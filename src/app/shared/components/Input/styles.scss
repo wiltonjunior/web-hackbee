@@ -6,8 +6,9 @@
   .MuiFormControl-root {
     width: 100%;
     .MuiInputBase-root {
-      svg {
-        color: $primary;
+      svg,
+      path {
+        fill: $purple;
       }
     }
     .MuiFormHelperText-root.Mui-error {
@@ -26,7 +27,7 @@
   }
 
   .MuiInput-underline:after {
-    border-bottom: 2px solid $white;
+    border-bottom: 2px solid $title;
   }
 
   .MuiFormControl-root {
@@ -34,7 +35,7 @@
       .MuiOutlinedInput-input {
         padding: 14px;
       }
-      .MuiOutlinedInput-notchedOutline{
+      .MuiOutlinedInput-notchedOutline {
         border-radius: 10px;
       }
     }
