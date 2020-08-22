@@ -5,5 +5,19 @@
     padding: 20px;
     border-radius: 20px;
     background: $grey-secondary;
+    .list-main {
+      .Table {
+        height: calc(100vh - 280px);
+        overflow-y: scroll;
+        table{
+          tr{
+            cursor: pointer;
+            &:hover{
+              background-color: $grey-secondary;
+            }
+          }
+        }
+      }
+    }
   }
 }

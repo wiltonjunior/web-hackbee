@@ -10,11 +10,11 @@ import './styles.scss'
 
 const Header = () => {
   const array = [
-    { label: 'CHAT_BOX_LIST_FILTER_HEADER_IN_PROGRESS', value: 'IN_PROGRESS' }
+    { label: 'Todos', value: 'ALL' }
   ]
   return (
     <div className="Header">
-      <Grid container spacing={1}>
+      <Grid container spacing={3}>
         <Grid item className="header_select">
           <Filter />
         </Grid>
@@ -22,23 +22,25 @@ const Header = () => {
           <Input
             translate
             array={array}
-            value="IN_PROGRESS"
+            // value="ALL"
             nameValue="value"
             nameText="label"
             type="select"
+            label="Canal"
           />
         </Grid>
         <Grid item xs className="header_select">
           <Input
             translate
             array={array}
-            value="IN_PROGRESS"
+            value="ALL"
             nameValue="value"
             nameText="label"
             type="select"
+            label="Departamento"
           />
         </Grid>
-        <Grid item xs={2} className="header_select">
+        <Grid item className="header_select">
           <Button icon={() => <Icon name="plus" />}>Novo usuário</Button>
         </Grid>
       </Grid>

@@ -6,11 +6,11 @@ import Translate from '@components/Translate'
 import './styles.scss'
 
 const Table = (props) => {
-  const { headers = [], data = [] } = props
+  const { headers = [], data = [], onClick } = props
 
   const getRow = (object) => {
     return (
-      <tr>
+      <tr onClick={() => onClick(object)}>
         {headers.map(({ field, component }, index) => {
           if (component) {
             return <th key={index}>{component()}</th>
@@ -41,3 +41,7 @@ const Table = (props) => {
 }
 
 export default Table
+
+Table.defaultProps = {
+  onClick: () => true
+}

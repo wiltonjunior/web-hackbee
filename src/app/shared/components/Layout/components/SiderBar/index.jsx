@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import clsx from 'clsx'
 
@@ -41,7 +41,7 @@ const SiderBar = (props) => {
   ]
 
   const goTo = (index) => {
-    const { router } = routes[index] || {};
+    const { router } = routes[index] || {}
     setActive(index)
     history.push(router)
   }
@@ -64,14 +64,16 @@ const SiderBar = (props) => {
           ))}
         </div>
       </div>
-      <div className="sidebar-footer">
-        <div className="user">
-          <Image src={avatar2} />
+      <Link to="login">
+        <div className="sidebar-footer">
+          <div className="user">
+            <Image src={avatar2} />
+          </div>
+          <div className="exit">
+            <Translate>SIDERBAR_EXIT</Translate>
+          </div>
         </div>
-        <div className="exit">
-          <Translate>SIDERBAR_EXIT</Translate>
-        </div>
-      </div>
+      </Link>
     </div>
   )
 }

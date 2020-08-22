@@ -16,7 +16,7 @@ const CardChannel = (props) => {
       <div className="chard-channel-main">
         {item.content()}
         <div className="chard-channel-icon">
-          <Icon size={70} name={item.icon} />
+          <Icon size={50} name={item.icon} />
         </div>
       </div>
     </div>

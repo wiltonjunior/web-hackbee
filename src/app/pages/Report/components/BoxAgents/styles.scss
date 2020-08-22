@@ -14,5 +14,12 @@
         font-family: $font-semibold;
       }
     }
+    .box-agents-main {
+      .CardAgent {
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }

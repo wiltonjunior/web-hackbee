@@ -10,7 +10,10 @@ import array from './data.js'
 
 import './styles.scss'
 
-const List = () => {
+const List = (props) => {
+
+  const {setUser} = props;
+
   const headers = [
     {
       name: 'Nome',
@@ -35,13 +38,18 @@ const List = () => {
       }
     }
   ]
+
+  const getUser = (user) => {
+    setUser(user);
+  }
+
   return (
     <div className="List">
       <div className="list-header">
         <Header />
       </div>
       <div className="list-main">
-        <Table headers={headers} data={array} />
+        <Table onClick={getUser} headers={headers} data={array} />
       </div>
     </div>
   )

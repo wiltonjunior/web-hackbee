@@ -21,8 +21,8 @@ export default () => (
           {({ user }) => (
             <Layout user={user} {...props}>
               {/* <UserValidate {...props} /> */}
-              <Route exact path="/" component={Users} />
-              <Route exact path="/s" component={Chat} />
+              <Route exact path="/" component={Chat} />
+              <Route exact path="/users" component={Users} />
               <Route exact path="/report" component={Report} />
               <Redirect from="*" to="/" />
             </Layout>
