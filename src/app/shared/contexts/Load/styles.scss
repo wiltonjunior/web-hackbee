@@ -1,19 +1,19 @@
 @import 'src/assets/sass/variables.scss';
 
 .Load {
-  position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  display: none;
   opacity: 0;
-  transition-duration: 100ms;
-  transition-property: all;
-  display: block;
   opacity: 1;
+  display: none;
+  display: block;
   z-index: 99999;
   color: #bbb;
+  position: fixed;
+  transition-property: all;
+  transition-duration: 100ms;
 
   .background {
     top: 0px;
@@ -21,8 +21,7 @@
     right: 0px;
     bottom: 0px;
     position: fixed;
-    background: #282A36;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9600d2', endColorstr='#b854d3',GradientType=0 ); /* IE6-9 */
+    background: $primary;
   }
 
   .image {
@@ -30,7 +29,7 @@
     left: 0px;
     right: 0px;
     position: fixed;
-    color:#3C4858;
+    color: #3c4858;
     font-weight: bold;
     .lds-css {
       margin: calc(50vh - 100px) calc(50vw - 50px) 0px;
@@ -47,7 +46,7 @@
       margin: 0px;
       display: flex;
       font-size: 20px;
-      color:#50FA7B;
+      color: #ffffff;
       font-weight: bold;
       text-transform: uppercase;
       justify-content: center;
@@ -95,18 +94,18 @@
     }
 
     div:after {
-      -webkit-transform: rotate(90deg);
       transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
     }
-    
+
     div,
     div:after {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       position: absolute;
-      border: 4px solid #50FA7B;
-      border-top-color: #ffffff;
+      border: 4px solid $grey;
+      border-top-color: #bababa;
     }
   }
 }

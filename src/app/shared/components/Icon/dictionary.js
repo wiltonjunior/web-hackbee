@@ -16,8 +16,14 @@ import { ReactComponent as add } from '@svg/add.svg'
 import { ReactComponent as check } from '@svg/check.svg'
 import { ReactComponent as _delete } from '@svg/delete.svg'
 import { ReactComponent as plus } from '@svg/plus.svg'
+import { ReactComponent as trash } from '@svg/trash.svg'
+import { ReactComponent as edit } from '@svg/edit.svg'
+import { ReactComponent as sales } from '@svg/sales.svg'
 
 export default {
+  sales,
+  edit,
+  trash,
   plus,
   check,
   logo,

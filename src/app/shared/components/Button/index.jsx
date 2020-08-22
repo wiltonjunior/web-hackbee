@@ -6,15 +6,15 @@ import Translate from '@components/Translate'
 import './styles.scss'
 
 const Button = (props) => {
-  const { icon, basic } = props
+  const { icon, basic, background } = props
 
-  const styles = clsx('Button', { basic })
+  const classes = clsx('Button', { basic })
+
+  const styles = { backgroundColor: background }
 
   return (
-    <button {...props} className={styles}>
-      <div className="button-icon">
-      {icon ? icon() : null}
-      </div>
+    <button {...props} style={styles} className={classes}>
+      <div className="button-icon">{icon ? icon() : null}</div>
       <Translate>{props.children}</Translate>
     </button>
   )

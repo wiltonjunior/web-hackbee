@@ -1,5 +1,6 @@
 export default {
   LANG: 'pt-BR',
+  LOAD: 'Carregando...',
 
   CHAT_LIST_HEADER_TITLE: 'Conversas',
   CHAT_LIST_FILTER_INPUT_PLACEHOLDER: 'Pesquisar',
@@ -9,8 +10,8 @@ export default {
   CHAT_CARDCLIENT_CITY: 'Cidade',
   CHAT_CARDCLIENT_GENDER: 'Gênero',
   CHAT_CARDCLIENT_COMMENTS: 'Observações',
-  CHAT_INPUT_SEND_SEND: "Enviar",
-  CHAT_INPUT_SEND_TYPING: "Digite uma mensagem...",
+  CHAT_INPUT_SEND_SEND: 'Enviar',
+  CHAT_INPUT_SEND_TYPING: 'Digite uma mensagem...',
 
-  CHAT_BOX_LIST_FILTER_HEADER_IN_PROGRESS: "Em adamento"
+  CHAT_BOX_LIST_FILTER_HEADER_IN_PROGRESS: 'Em adamento'
 }

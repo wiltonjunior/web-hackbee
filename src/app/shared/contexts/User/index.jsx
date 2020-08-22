@@ -2,6 +2,8 @@ import React from 'react'
 import configs from '@configs'
 import { useHistory } from 'react-router-dom'
 
+import routes from '@components/Layout/routers'
+
 const { Provider, Consumer } = React.createContext()
 
 const UserConsumer = (props) => {
@@ -23,12 +25,15 @@ const UserProvider = (props) => {
   }
 
   const uptateToken = () => {
-    let user = sessionStorage.getItem(configs.ObjectSession)
     const token = sessionStorage.getItem(configs.TokenSession)
+    let object = sessionStorage.getItem(configs.ObjectSession) || {}
     if (!token) return null
-    user = Buffer.from(token.split('.')[1], 'base64').toString()
-    sessionStorage.setItem(configs.ObjectSession, user)
-    return JSON.parse(user)
+    user = JSON.parse(
+      Buffer.from(String(token).split('.')[1], 'base64').toString()
+    )
+    user = { ...user, ...object }
+    sessionStorage.setItem(configs.ObjectSession, JSON.stringify(user))
+    return user
   }
 
   const value = { user: user }
@@ -38,14 +43,22 @@ const UserProvider = (props) => {
 const UserValidate = (props) => {
   const history = useHistory()
 
-  const isLogged = ({ user: item }) => {
-    const token = item()
+  const isLogged = ({ user: token }) => {
+    const user = token()
     const path = props.location.pathname
     const isPublic = configs.Routes.Publics.indexOf(path) > -1
-    if (token && !isPublic) {
-      const expTime = parseInt(`${token.exp.toString()}000`, 0)
-      if (Date.now() >= expTime) {
-        history.push('/login')
+
+    const array = routes.filter((item) => item.permission.includes(user.type))
+    const item = array.find((item) => item.router.includes(path))
+
+    if (item && user && !isPublic) {
+      if (user.type === 'master') {
+        window.location.hash = 'clients'
+        return null
+      }
+      if (user.type === 'client') {
+        window.location.hash = '/'
+        return null
       }
     } else if (!isPublic) {
       history.push('/login')

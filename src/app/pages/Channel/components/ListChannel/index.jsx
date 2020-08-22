@@ -12,7 +12,7 @@ import array from './data.js'
 
 import './styles.scss'
 
-const List = (props) => {
+const ListChannel = (props) => {
   const [open, setOpen] = useState(false)
 
   const { setUser } = props
@@ -21,24 +21,6 @@ const List = (props) => {
     {
       name: 'Nome',
       field: 'name'
-    },
-    {
-      name: 'Canal',
-      field: 'channel'
-    },
-    {
-      name: 'Avaliação',
-      field: 'note'
-    },
-    {
-      name: 'Opção',
-      component: () => {
-        return (
-          <IconButton onClick={toggle}>
-            <Icon size={30} name="delete" />
-          </IconButton>
-        )
-      }
     }
   ]
 
@@ -64,7 +46,7 @@ const List = (props) => {
   }
 
   return (
-    <div className="List">
+    <div className="ListChannel">
       <div className="list-header">
         <Header />
       </div>
@@ -82,4 +64,4 @@ const List = (props) => {
   )
 }
 
-export default List
+export default ListChannel

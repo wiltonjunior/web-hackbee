@@ -5,10 +5,12 @@ import Login from '@pages/Login'
 import Chat from '@pages/Chat'
 import Report from '@pages/Report'
 import Users from '@pages/Users'
+import Clients from '@pages/Clients'
+import Channel from '@pages/Channel'
 
 import NotFount from '@pages/NotFount'
 
-import { UserConsumer } from '@contexts/User'
+import {UserValidate, UserConsumer } from '@contexts/User'
 
 import Layout from '@components/Layout'
 
@@ -20,10 +22,12 @@ export default () => (
         <UserConsumer>
           {({ user }) => (
             <Layout user={user} {...props}>
-              {/* <UserValidate {...props} /> */}
+              <UserValidate {...props} />
               <Route exact path="/" component={Chat} />
               <Route exact path="/users" component={Users} />
+              <Route exact path="/channel" component={Channel} />
               <Route exact path="/report" component={Report} />
+              <Route exact path="/clients" component={Clients} />
               <Redirect from="*" to="/" />
             </Layout>
           )}

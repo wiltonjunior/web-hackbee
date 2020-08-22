@@ -7,8 +7,8 @@ import IconButton from '@material-ui/core/IconButton'
 
 import './styles.scss'
 
-const Modal = (props) => {
-  const { open, close, title, actions, className } = props
+const ConfirmModal = (props) => {
+  const { open, close, title, subtitle, actions, className } = props
 
   const getIconClose = () => {
     if (close) {
@@ -20,7 +20,7 @@ const Modal = (props) => {
     }
   }
 
-  const styles = clsx(['Modal', className])
+  const styles = clsx(['ConfirmModal', className])
 
   return (
     <Dialog className={styles} onClose={close} open={open}>
@@ -28,10 +28,12 @@ const Modal = (props) => {
       <div className="confirm-modal-title">
         <h2>{title}</h2>
       </div>
-      <div className="confirm-modal-subtitle">{props.children}</div>
+      <div className="confirm-modal-subtitle">
+        <p>{subtitle}</p>
+      </div>
       <div className="confirm-modal-actions">{actions()}</div>
     </Dialog>
   )
 }
 
-export default Modal
+export default ConfirmModal
