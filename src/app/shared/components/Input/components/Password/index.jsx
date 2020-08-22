@@ -11,7 +11,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 import './styles.scss'
 
-const DatePicker = props => {
+const DatePicker = (props) => {
   const { label, value, helperText } = props
 
   const [values, setValues] = React.useState({
@@ -37,7 +37,7 @@ const DatePicker = props => {
     setValues({ ...values, showPassword: !values.showPassword })
   }
 
-  const handleMouseDownPassword = event => {
+  const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
 
@@ -45,6 +45,7 @@ const DatePicker = props => {
     <FormControl className="Password" variant="outlined">
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
+        {...props}
         value={value}
         label={label}
         onChange={handleChange}
@@ -61,7 +62,6 @@ const DatePicker = props => {
             </IconButton>
           </InputAdornment>
         }
-        labelWidth={50}
       />
       <FormHelperText>{helperText}</FormHelperText>
     </FormControl>

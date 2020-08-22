@@ -1,42 +1,27 @@
 @import 'src/assets/sass/variables.scss';
 
 .Table {
-  box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
-  .MuiTableCell-root {
-    height: 50px;
-    padding: 2px 20px;
-    &.Mui-selected,
-    .MuiTableRow-root {
-      background: linear-gradient(135deg, #ff6a13 0%, #d55000 100%);
+  width: 100%;
+  border-radius: 20px;
+  background-color: $white;
+  border-collapse: collapse;
+
+  thead {
+    box-shadow: 0px 1px 0px $ice;
+    th {
+      color: $dark4;
+      font-family: $font-semibold;
     }
   }
 
-  .table_empty_list {
-    padding: 20px;
-    text-align: center;
+  td,
+  th {
+    width: 100%;
+    padding: 18px;
+    text-align: left;
+    font-family: $font-regular;
   }
-  .table_collapse {
-    padding: 20px;
-    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
-  }
-  .icon_arrow {
-    width: 4rem;
-    padding: 0px;
-    color: $primary;
-  }
-
-  .MuiTable-root {
-    .MuiTableCell-root {
-      color: $white;
-    }
-  }
-
-  .MuiTablePagination-root {
-    .MuiToolbar-root {
-      color: $white;
-      svg {
-        fill: $white;
-      }
-    }
+  tr:nth-child(even) {
+    background-color: $ice;
   }
 }

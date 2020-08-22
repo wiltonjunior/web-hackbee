@@ -1,0 +1,24 @@
+@import 'src/assets/sass/variables.scss';
+
+.Report {
+  .List {
+    .Header {
+      padding: 10px 0;
+      .header_select {
+        .Input {
+          .MuiInputBase-root {
+            height: 55px;
+            border-radius: 15px;
+            background-color: $label;
+            svg path {
+              fill: $purple-secondary;
+            }
+            .MuiOutlinedInput-notchedOutline {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

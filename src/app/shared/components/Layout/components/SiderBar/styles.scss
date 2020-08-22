@@ -3,7 +3,6 @@
 .SiderBar {
   width: 90px;
   display: flex;
-  height: calc(100vh - 40px);
   padding: 20px 0;
   align-items: center;
   flex-direction: column;
@@ -47,11 +46,13 @@
   }
   .sidebar-footer {
     .user {
-      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      border-radius: 15px;
       border: 2px solid $orange;
       img {
-        width: 50px;
-        height: 50px;
+        width: 100%;
       }
     }
     .exit {

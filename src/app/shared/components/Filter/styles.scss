@@ -1,0 +1,16 @@
+@import 'src/assets/sass/variables.scss';
+
+.Filter {
+  .Input {
+    .MuiInputBase-root {
+      border-radius: 10px;
+      background-color: $label;
+      svg path {
+        fill: $purple-secondary;
+      }
+      .MuiOutlinedInput-notchedOutline {
+        border: none;
+      }
+    }
+  }
+}
