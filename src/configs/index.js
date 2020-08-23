@@ -1,14 +1,20 @@
 export default {
   api: {
     endpoints: {
-      clients: {
-        url: 'clients'
+      clientes: {
+        url: 'clientes'
       },
       users: {
         url: 'user'
       },
       login: {
         url: 'login'
+      },
+      channels: {
+        url: 'channels'
+      },
+      departments: {
+        url: 'departments'
       }
     }
   },

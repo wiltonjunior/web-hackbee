@@ -25,6 +25,10 @@ const List = (props) => {
     {
       name: 'Nome',
       field: 'name'
+    },
+    {
+      name: 'Email',
+      field: 'email'
     }
   ]
 
@@ -32,7 +36,10 @@ const List = (props) => {
     enableReinitialize: true,
     initialValues: {},
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Nome obrigatório')
+      name: Yup.string().required('Nome obrigatório'),
+      email: Yup.string()
+        .required('Email obritatório')
+        .email('Email obritatório')
     })
   }
 
@@ -46,7 +53,10 @@ const List = (props) => {
         <Button basic onClick={toggle}>
           Cancelar
         </Button>
-        <Button onClick={handleSubmit} icon={() => <Icon size={16} name="check" />}>
+        <Button
+          onClick={handleSubmit}
+          icon={() => <Icon size={16} name="check" />}
+        >
           Salvar Cliente
         </Button>
       </div>
@@ -54,6 +64,7 @@ const List = (props) => {
   }
 
   const onSubmit = ({ values, submit, resetForm }) => {
+    values.password = 123456;
     submit({ params: values })
     resetForm()
   }
@@ -67,7 +78,7 @@ const List = (props) => {
         <Table headers={headers} data={data} />
       </div>
 
-      <Axios api="clients" method="post" onSuccess={updateList}>
+      <Axios api="clientes" method="post" onSuccess={updateList}>
         {({ submit }) => (
           <Formik
             {...schema}
@@ -92,6 +103,21 @@ const List = (props) => {
                   startAdornment={
                     <InputAdornment position="start">
                       <Icon size={30} name="sales" />
+                    </InputAdornment>
+                  }
+                />
+                <Input
+                  shrink
+                  label="Email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  error={errors.email}
+                  helperText={errors.email}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <Icon size={30} name="user" />
                     </InputAdornment>
                   }
                 />

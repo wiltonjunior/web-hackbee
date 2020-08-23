@@ -30,6 +30,10 @@
     border-bottom: 2px solid $title;
   }
 
+  .MuiInputBase-input {
+    height: 25px !important;
+  }
+
   .MuiFormControl-root {
     .MuiOutlinedInput-root {
       .MuiOutlinedInput-input {

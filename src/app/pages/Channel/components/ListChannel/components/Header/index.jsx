@@ -1,7 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 
-import Input from '@components/Input'
 import Filter from '@components/Filter'
 import Button from '@components/Button'
 import Icon from '@components/Icon'
@@ -17,7 +16,7 @@ const Header = ({ onClick }) => {
         </Grid>
         <Grid item className="header_select">
           <Button onClick={onClick} icon={() => <Icon name="plus" />}>
-            Novo usuário
+            Novo Canal
           </Button>
         </Grid>
       </Grid>

@@ -16,7 +16,7 @@ const Header = ({ onClick }) => {
         </Grid>
         <Grid item className="header_select">
           <Button onClick={onClick} icon={() => <Icon name="plus" />}>
-            Novo usuário
+            Novo Departamento
           </Button>
         </Grid>
       </Grid>

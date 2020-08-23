@@ -1,18 +1,27 @@
 import React, { useState } from 'react'
 import { IconButton } from '@material-ui/core'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
-import Icon from '@components/Icon'
+import Axios from '@components/Axios'
 import Table from '@components/Table'
+import Modal from '@components/Modal'
+import Input from '@components/Input'
+import Icon from '@components/Icon'
 import Button from '@components/Button'
-import ConfirmModal from '@components/ConfirmModal'
+import UserUtils from '@utils/userUtils'
 
 import Header from './components/Header'
 
-import array from './data.js'
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 
 import './styles.scss'
 
 const ListDepartment = (props) => {
+  const { channel } = props
+
+  const [run, setRun] = useState(1)
+  const [data, setData] = useState([])
   const [open, setOpen] = useState(false)
 
   const { setUser } = props
@@ -21,26 +30,22 @@ const ListDepartment = (props) => {
     {
       name: 'Nome',
       field: 'name'
-    },
-    {
-      name: 'Canal',
-      field: 'channel'
-    },
-    {
-      name: 'Opção',
-      component: () => {
-        return (
-          <div>
-            <IconButton onClick={toggle}>
-              <Icon size={30} name="edit" />
-            </IconButton>
-            <IconButton onClick={toggle}>
-              <Icon size={30} name="delete" />
-            </IconButton>
-          </div>
-        )
-      }
     }
+    // {
+    //   name: 'Opção',
+    //   component: () => {
+    //     return (
+    //       <div>
+    //         <IconButton onClick={toggle}>
+    //           <Icon size={30} name="edit" />
+    //         </IconButton>
+    //         <IconButton onClick={toggle}>
+    //           <Icon size={30} name="delete" />
+    //         </IconButton>
+    //       </div>
+    //     )
+    //   }
+    // }
   ]
 
   const getUser = (user) => {
@@ -51,34 +56,98 @@ const ListDepartment = (props) => {
     setOpen(!open)
   }
 
-  const actions = () => {
+  const updateList = () => {
+    setRun(run + 1)
+  }
+
+  const onSuccess = (data) => {
+    setData(data)
+  }
+
+  const schema = {
+    enableReinitialize: true,
+    initialValues: {},
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required('Nome obrigatório')
+    })
+  }
+
+  const actions = ({ handleSubmit }) => {
     return (
       <div className="buttons_modal">
         <Button basic onClick={toggle}>
           Cancelar
         </Button>
-        <Button background="#FC5A5A" icon={() => <Icon name="trash" />}>
-          Excluir usuário
+        <Button
+          onClick={handleSubmit}
+          icon={() => <Icon size={16} name="check" />}
+        >
+          Salvar Departamento
         </Button>
       </div>
     )
   }
 
+  const onSubmit = ({ values, submit, resetForm }) => {
+    values.channel_id = channel.id
+    values.cliente_id = channel.cliente_id
+    submit({ params: values })
+    resetForm()
+  }
+
+  const component = () => {
+    if (channel) {
+      return (
+        <div className="list-department-main">
+          <Axios run={run} api="departments" onSuccess={onSuccess}>
+            <div className="list-header">
+              <Header onClick={toggle} />
+            </div>
+            <div className="list-main">
+              <Table onClick={getUser} headers={headers} data={data} />
+            </div>
+          </Axios>
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="ListDepartment">
-      <div className="list-header">
-        <Header />
-      </div>
-      <div className="list-main">
-        <Table onClick={getUser} headers={headers} data={array} />
-      </div>
-      <ConfirmModal
-        open={open}
-        close={toggle}
-        actions={actions}
-        title="Tem certeza disto?"
-        subtitle="Você tem certeza que deseja remover esse usuário, caso exclua, todos os dados relacionados a ele excluídos."
-      />
+      {component()}
+      <Axios api="departments" method="post" onSuccess={updateList}>
+        {({ submit }) => (
+          <Formik
+            {...schema}
+            onSubmit={(values, event) => onSubmit({ ...event, values, submit })}
+          >
+            {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
+              <Modal
+                open={open}
+                close={toggle}
+                actions={() => actions({ handleSubmit })}
+                title="Novo Departamento"
+              >
+                <Input
+                  shrink
+                  label="Name"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  error={errors.name}
+                  helperText={errors.name}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <Icon size={30} name="sales" />
+                    </InputAdornment>
+                  }
+                />
+              </Modal>
+            )}
+          </Formik>
+        )}
+      </Axios>
     </div>
   )
 }

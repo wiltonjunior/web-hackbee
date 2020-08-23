@@ -44,7 +44,8 @@ const UserValidate = (props) => {
   const history = useHistory()
 
   const isLogged = ({ user: token }) => {
-    const user = token()
+    const user = token() || {};
+    
     const path = props.location.pathname
     const isPublic = configs.Routes.Publics.indexOf(path) > -1
 
@@ -56,7 +57,7 @@ const UserValidate = (props) => {
         window.location.hash = 'clients'
         return null
       }
-      if (user.type === 'client') {
+      if (user.type === 'agente') {
         window.location.hash = '/'
         return null
       }

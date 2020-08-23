@@ -1,21 +1,27 @@
 import React, { useState } from 'react'
-import { IconButton } from '@material-ui/core'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
-import Icon from '@components/Icon'
+import Axios from '@components/Axios'
 import Table from '@components/Table'
+import Modal from '@components/Modal'
+import Input from '@components/Input'
+import Icon from '@components/Icon'
 import Button from '@components/Button'
-import ConfirmModal from '@components/ConfirmModal'
 
 import Header from './components/Header'
 
-import array from './data.js'
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 
 import './styles.scss'
 
 const ListChannel = (props) => {
-  const [open, setOpen] = useState(false)
+  const { setChannel } = props
 
-  const { setUser } = props
+  const [run, setRun] = useState(1)
+  const [data, setData] = useState([])
+  const [open, setOpen] = useState(false)
+  const [clients, setClients] = useState([])
 
   const headers = [
     {
@@ -24,43 +30,124 @@ const ListChannel = (props) => {
     }
   ]
 
-  const getUser = (user) => {
-    setUser(user)
+  const schema = {
+    enableReinitialize: true,
+    initialValues: {},
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required('Nome obrigatório')
+    })
+  }
+
+  const onSuccess = (data) => {
+    setData(data)
+  }
+
+  const updateList = () => {
+    setRun(run + 1)
+  }
+
+  const getChannel = (channel) => {
+    setChannel(channel)
   }
 
   const toggle = () => {
     setOpen(!open)
   }
 
-  const actions = () => {
+  const onSuccessClient = (data) => {
+    setClients(data)
+  }
+
+  const actions = ({ handleSubmit }) => {
     return (
       <div className="buttons_modal">
         <Button basic onClick={toggle}>
           Cancelar
         </Button>
-        <Button background="#FC5A5A" icon={() => <Icon name="trash" />}>
-          Excluir usuário
+        <Button
+          onClick={handleSubmit}
+          icon={() => <Icon size={16} name="check" />}
+        >
+          Salvar Canal
         </Button>
       </div>
     )
   }
 
+  const onSubmit = ({ values, submit, resetForm }) => {
+    submit({ params: values })
+    resetForm()
+  }
   return (
-    <div className="ListChannel">
-      <div className="list-header">
-        <Header />
+    <Axios run={run} api="channels" onSuccess={onSuccess}>
+      <div className="ListChannel">
+        <div className="list-header">
+          <Header onClick={toggle} />
+        </div>
+        <div className="list-main">
+          <Table onClick={getChannel} headers={headers} data={data} />
+        </div>
+
+        <Axios api="channels" method="post" onSuccess={updateList}>
+          {({ submit }) => (
+            <Formik
+              {...schema}
+              onSubmit={(values, event) =>
+                onSubmit({ ...event, values, submit })
+              }
+            >
+              {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
+                <Modal
+                  open={open}
+                  close={toggle}
+                  actions={() => actions({ handleSubmit })}
+                  title="Novo Canal"
+                >
+                  <Input
+                    shrink
+                    label="Name"
+                    name="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                    error={errors.name}
+                    helperText={errors.name}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <Icon size={30} name="sales" />
+                      </InputAdornment>
+                    }
+                  />
+
+                  <Axios run api="clientes" onSuccess={onSuccessClient}>
+                    <Input
+                      shrink
+                      label="Cliente"
+                      nameText="name"
+                      name="cliente_id"
+                      nameValue="id"
+                      type="autocomplete"
+                      array={clients}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.cliente_id}
+                      error={errors.cliente_id}
+                      helperText={errors.cliente_id}
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <Icon size={30} name="user" />
+                        </InputAdornment>
+                      }
+                    />
+                  </Axios>
+
+                </Modal>
+              )}
+            </Formik>
+          )}
+        </Axios>
       </div>
-      <div className="list-main">
-        <Table onClick={getUser} headers={headers} data={array} />
-      </div>
-      <ConfirmModal
-        open={open}
-        close={toggle}
-        actions={actions}
-        title="Tem certeza disto?"
-        subtitle="Você tem certeza que deseja remover esse usuário, caso exclua, todos os dados relacionados a ele excluídos."
-      />
-    </div>
+    </Axios>
   )
 }
 

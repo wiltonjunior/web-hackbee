@@ -3,25 +3,25 @@ export default [
     icon: 'message',
     router: '/',
     name: 'SIDERBAR_CHAT',
-    permission: ['client', 'admin', 'agent', 'manager']
+    permission: ['cliente', 'admin', 'agent', 'manager']
   },
   {
     icon: 'dashbord',
     router: '/report',
     name: 'SIDERBAR_DASHBORD',
-    permission: ['client', 'admin', 'manager']
+    permission: ['cliente', 'admin', 'manager']
   },
   {
     icon: 'users',
     router: '/users',
     name: 'SIDERBAR_USERS',
-    permission: ['client', 'admin', 'manager']
+    permission: ['cliente', 'admin', 'manager']
   },
   {
     icon: 'settings',
     router: '/channel',
     name: 'SIDERBAR_SETTINGS',
-    permission: ['client', 'admin', 'manager']
+    permission: ['cliente', 'admin', 'manager']
   },
   {
     icon: 'sales',

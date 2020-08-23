@@ -1,9 +1,14 @@
 @import 'src/assets/sass/variables.scss';
 
 .Modal {
+  .Input {
+    margin-bottom: 2rem;
+  }
+
   .MuiDialog-paperWidthSm {
+    width: 100%;
     padding: 2rem;
-    max-width: 35rem;
+    max-width: 30rem;
     border-radius: 20px;
   }
 

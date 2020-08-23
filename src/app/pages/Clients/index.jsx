@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Grid from '@material-ui/core/Grid'
 
 import Axios from '@components/Axios'
 
@@ -21,7 +20,7 @@ const Clients = () => {
   }
 
   return (
-    <Axios run={run} api="clients" onSuccess={onSuccess}>
+    <Axios run={run} api="clientes" onSuccess={onSuccess}>
       <div className="Clients">
         <HeaderClients />
         <List data={data} updateList={updateList} />
