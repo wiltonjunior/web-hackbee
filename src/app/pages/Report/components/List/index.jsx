@@ -12,10 +12,6 @@ const List = ({ departamentos = [] }) => {
       field: 'name'
     },
     {
-      name: 'Status',
-      field: 'status'
-    },
-    {
       name: 'Conversas',
       field: 'conversations_count'
     }

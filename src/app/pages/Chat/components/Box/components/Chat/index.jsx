@@ -13,34 +13,13 @@ const Chat = (props) => {
   const talkjsContainer = useRef()
 
   useEffect(() => {
-    Talk.ready.then(() => {
-      var me = new Talk.User({
-        // just hardcode any user id, as long as your real users don't have this id
-        id: 'myapp_operator',
-        name: 'ExampleApp Operator',
-        email: 'support@example.com',
-        photoUrl:
-          'http://dmssolutions.nl/wp-content/uploads/2013/06/helpdesk.png',
-        welcomeMessage: 'Hi there! How can I help you?'
-      })
-
-      window.talkSession = new Talk.Session({
-        appId: 'tc7Q1y1H',
-        me: me
-      })
-
-      var inbox = window.talkSession.createInbox({})
-
-      inbox.mount(talkjsContainer.current)
-      inbox.toggleDesktopNotifications(true)
-      inbox.on('sendMessage', updateList)
-      inbox.on('conversationSelected', updateChannel)
-    })
-  }, [])
+    if (item) {
+      getChat()
+    }
+  }, [item])
 
   const updateChannel = (item) => {
     const user = UserUtils.getUser()
-    console.log(item)
     http({
       api: 'conversations',
       method: 'put',
@@ -49,26 +28,52 @@ const Chat = (props) => {
     })
   }
 
+  const getChat = () => {
+    Talk.ready.then(() => {
+      const user = UserUtils.getUser()
+
+      let me = new Talk.User({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        photoUrl:
+          'http://dmssolutions.nl/wp-content/uploads/2013/06/helpdesk.png',
+        welcomeMessage: 'Bem vindo ao Tok'
+      })
+
+      window.talkSession = new Talk.Session({
+        appId: 'tc7Q1y1H',
+        me: me
+      })
+
+      var conversation = window.talkSession.getOrCreateConversation(
+        item.conversation_id
+      )
+
+      conversation.setParticipant(me)
+
+      const chatbox = window.talkSession.createChatbox(conversation, {
+        showChatHeader: false,
+        showFeedHeader: false,
+        showMobileBackButton: false
+      })
+
+      chatbox.mount(talkjsContainer.current)
+
+      chatbox.on('sendMessage', updateList)
+      chatbox.on('conversationSelected', updateChannel)
+    })
+  }
+
   return (
     <div className="Chat">
-      <Header />
-
-      {/* <div
-        style={{ backgroundImage: `url(${background})` }}
-        className="chat-maessage"
-      >
-        <Message />
-        <Message right />
-      </div> */}
-
+      <Header {...props} />
       <div
         className="chat-maessage"
         ref={talkjsContainer}
         id="chat"
         style={{ backgroundImage: `url(${background})` }}
       ></div>
-
-      {/* <InputSend /> */}
     </div>
   )
 }

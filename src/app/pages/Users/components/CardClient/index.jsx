@@ -35,9 +35,7 @@ const CardClient = (props) => {
     initialValues: {},
     validationSchema: Yup.object().shape({
       name: Yup.string().required('Nome obrigatório'),
-      email: Yup.string()
-        .required('Email obritatório')
-        .email('Email obritatório')
+      type: Yup.string().required('Cargo é obrigatório'),
     })
   }
 
@@ -75,7 +73,7 @@ const CardClient = (props) => {
                       variant="standard"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.email}
+                      value={user.email}
                       error={errors.email}
                       helperText={errors.email}
                     />
