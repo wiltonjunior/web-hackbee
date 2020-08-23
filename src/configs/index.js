@@ -19,6 +19,9 @@ export default {
       register: {
         url: 'register'
       },
+      agentes: {
+        url: 'agents'
+      },
       report: {
         url: 'relatorios',
         status: {
@@ -35,7 +38,10 @@ export default {
         }
       },
       conversations: {
-        url: 'conversations'
+        url: 'conversations',
+        transference: {
+          url: 'conversations/transference'
+        }
       }
     }
   },

@@ -48,7 +48,7 @@ class Util {
         const value = `/${others[0]}`
         params = this._setParams(others[1], value)
       } else if (this.isObject(others)) {
-        const value = `/`
+        const value = ``
         params = this._setParams(others, value)
       } else {
         const value = `/${others}`

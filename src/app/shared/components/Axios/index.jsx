@@ -35,11 +35,11 @@ const Axios = props => {
   const error = error => {
     const message = Utils.getValue(error, 'response.data.error')
     props.onError(error)
-    if (message) {
-      Toast.sendMessage('error', message, false)
-    } else {
-      Toast.sendMessage('error', 'AXIOS_ERRO', 10000)
-    }
+    // if (message) {
+    //   Toast.sendMessage('error', message, false)
+    // } else {
+    //   Toast.sendMessage('error', 'AXIOS_ERRO', 10000)
+    // }
     if (message === 'TOKEN_EXPIRED') {
       window.location.hash = '/login'
     }

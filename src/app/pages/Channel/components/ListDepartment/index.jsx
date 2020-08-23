@@ -44,7 +44,9 @@ const ListDepartment = (props) => {
   }
 
   const onSuccess = (data) => {
-    setData(data)
+    if (data) {
+      setData(data)
+    }
   }
 
   const schema = {
@@ -82,7 +84,12 @@ const ListDepartment = (props) => {
     if (channel) {
       return (
         <div className="list-department-main">
-          <Axios run={run} api="departments" onSuccess={onSuccess}>
+          <Axios
+            run={run}
+            api="departments"
+            onSuccess={onSuccess}
+            others={{ channel_id: channel.id }}
+          >
             <div className="list-header">
               <Header onClick={toggle} />
             </div>

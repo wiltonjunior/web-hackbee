@@ -78,6 +78,7 @@ const ListChannel = (props) => {
     submit({ params: values })
     resetForm()
   }
+  
   return (
     <Axios run={run} api="channels" onSuccess={onSuccess}>
       <div className="ListChannel">
