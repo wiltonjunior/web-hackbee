@@ -10,12 +10,12 @@ const Chart = ({ conversations = [] }) => {
   const [itens, setItens] = useState()
 
   useEffect(() => {
-    const item = {}
+    const object = {}
     for (const value of conversations) {
-      const { created_at, conversations } = value || {}
-      item[created_at] = conversations;
+      const { day, total } = value || {}
+      object[day] = total
     }
-    setItens(item)
+    setItens(object)
   }, [conversations])
 
   return (

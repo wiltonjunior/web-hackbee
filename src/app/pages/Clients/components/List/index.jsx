@@ -23,7 +23,7 @@ const List = (props) => {
 
   const headers = [
     {
-      name: 'Nome',
+      name: 'Nome', 
       field: 'name'
     },
     {
