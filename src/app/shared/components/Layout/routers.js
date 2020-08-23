@@ -3,7 +3,7 @@ export default [
     icon: 'message',
     router: '/',
     name: 'SIDERBAR_CHAT',
-    permission: ['cliente', 'admin', 'agent', 'manager']
+    permission: ['cliente', 'admin', 'agente', 'manager']
   },
   {
     icon: 'dashbord',

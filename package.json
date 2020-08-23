@@ -17,6 +17,7 @@
     "customize-cra": "^1.0.0",
     "formik": "^2.1.5",
     "history": "4.9.0",
+    "jquery": "^3.5.1",
     "material-table": "^1.68.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
@@ -30,6 +31,7 @@
     "react-scripts": "3.4.3",
     "react-text-mask": "^5.4.3",
     "react-toastify": "^5.5.0",
+    "talkjs": "^0.14.2",
     "yup": "^0.28.1"
   },
   "scripts": {

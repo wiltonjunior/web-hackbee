@@ -33,7 +33,7 @@ const Axios = props => {
   }
 
   const error = error => {
-    const message = Utils.getValue(error, 'response.data.message')
+    const message = Utils.getValue(error, 'response.data.error')
     props.onError(error)
     if (message) {
       Toast.sendMessage('error', message, false)

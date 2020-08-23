@@ -19,8 +19,14 @@ import { ReactComponent as plus } from '@svg/plus.svg'
 import { ReactComponent as trash } from '@svg/trash.svg'
 import { ReactComponent as edit } from '@svg/edit.svg'
 import { ReactComponent as sales } from '@svg/sales.svg'
+import { ReactComponent as emoticon } from '@svg/emoticon.svg'
+import { ReactComponent as link } from '@svg/link.svg'
+import { ReactComponent as copy } from '@svg/copy.svg'
 
 export default {
+  copy,
+  link,
+  emoticon,
   sales,
   edit,
   trash,

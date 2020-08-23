@@ -1,6 +1,16 @@
 @import 'src/assets/sass/variables.scss';
 @import 'src/assets/sass/fonts.scss';
 
+
+.hub-container {
+}
+
+.Hub .Panel.items-panel {
+  padding: 20px !important;
+  max-width: 700px;
+  display: none !important;
+}
+
 body,
 html {
   margin: 0;

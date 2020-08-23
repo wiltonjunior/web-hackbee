@@ -6,15 +6,20 @@ import CardUser from './components/CardUser'
 
 import './styles.scss'
 
-const List = () => {
+const List = ({ data = [], setItem, object }) => {
   return (
     <div className="List">
       <Header />
       <Filter />
       <div className="list-content">
-        <CardUser active />
-        <CardUser />
-        <CardUser />
+        {data.map((item, index) => (
+          <CardUser
+            key={index}
+            item={item}
+            setItem={setItem}
+            active={object?.id === item?.id}
+          />
+        ))}
       </div>
     </div>
   )

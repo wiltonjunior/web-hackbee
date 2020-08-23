@@ -13,10 +13,16 @@ import './styles.scss'
 const CardClient = (props) => {
   const array = [
     {
-      name: 'Genente'
+      name: 'Gerente',
+      value: 'manager'
     },
     {
-      name: 'Genente'
+      name: 'Agente',
+      value: 'agente'
+    },
+    {
+      name: 'Admin',
+      value: 'admin'
     }
   ]
 
@@ -30,7 +36,6 @@ const CardClient = (props) => {
           </div>
           <div className="cardclient-description">
             <h4> {user.name} </h4>
-            <p>ID 59856</p>
           </div>
         </div>
         <div className="cardclient-main">
@@ -39,14 +44,15 @@ const CardClient = (props) => {
               label="E-mail"
               disabled
               variant="standard"
-              value="ramon@beedelivery.com.br"
+              value={user.email}
             />
           </div>
           <div className="cardclient-main-item">
             <Input
               variant="standard"
               array={array}
-              nameValue="name"
+              nameValue="value"
+              nameText="name"
               type="select"
               label="Cargo"
             />

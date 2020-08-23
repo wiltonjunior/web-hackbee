@@ -10,7 +10,6 @@ import './styles.scss'
 
 const CardAgent = (props) => {
   const { item = {} } = props
-  const { user = {} } = item
   return (
     <div className="CardAgent">
       <div className="char-agent-user">
@@ -18,13 +17,13 @@ const CardAgent = (props) => {
           <Image src={avatar1} />
         </div>
         <div>
-          <div className="user-name">{user.name}</div>
-          <div className="user-description">{user.description}</div>
+          <div className="user-name">{item.name}</div>
+          <div className="user-description">{item.email}</div>
         </div>
       </div>
       <div className="chard-channel-main">
         <div>Atendimentos</div>
-        <div>{item.count}</div>
+        <div>{item.conversations_count || 0}</div>
       </div>
     </div>
   )

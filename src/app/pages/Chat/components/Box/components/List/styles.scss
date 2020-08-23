@@ -8,6 +8,10 @@
       .Filter{
         padding: 1rem;
       }
+      .list-content{
+        height: 700px;
+        overflow-y: auto;
+      }
     }
   }
 }

@@ -1,21 +1,11 @@
 import React from 'react'
 
 import * as Material from '@material-ui/lab'
-import Avatar from '@material-ui/core/Avatar'
 import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
 
 import Utils from '@utils'
 
 import './styles.scss'
-
-const useStyles = makeStyles((theme) => ({
-  small: {
-    marginRight: 10,
-    width: theme.spacing(3),
-    height: theme.spacing(3)
-  }
-}))
 
 const Autocomplete = (props = {}) => {
   const {
@@ -24,7 +14,6 @@ const Autocomplete = (props = {}) => {
     label,
     variant,
     nameText,
-    InputProps,
     array = [],
     nameValue = '',
     handleChange,

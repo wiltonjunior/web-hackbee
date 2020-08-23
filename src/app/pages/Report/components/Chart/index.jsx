@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { LineChart } from 'react-chartkick'
 
@@ -6,28 +6,17 @@ import 'chart.js'
 
 import './styles.scss'
 
-const Chart = () => {
-  const itens = {
-    '2017-05-13': 2,
-    '2017-05-14': 5,
-    '2017-05-15': 1,
-    '2017-05-16': 3,
-    '2017-05-16': 6,
-    '2017-05-17': 7,
-    '2017-05-18': 4,
-    '2017-05-19': 1,
-    '2017-05-20': 8,
-    '2017-05-21': 2,
-    '2017-05-22': 3,
-    '2017-05-23': 4,
-    '2017-05-24': 6,
-    '2017-05-25': 4,
-    '2017-05-26': 7,
-    '2017-05-27': 2,
-    '2017-05-28': 4,
-    '2017-05-29': 5,
-    '2017-05-30': 3
-  }
+const Chart = ({ conversations = [] }) => {
+  const [itens, setItens] = useState()
+
+  useEffect(() => {
+    const item = {}
+    for (const value of conversations) {
+      const { created_at, conversations } = value || {}
+      item[created_at] = conversations;
+    }
+    setItens(item)
+  }, [conversations])
 
   return (
     <div className="Chart">

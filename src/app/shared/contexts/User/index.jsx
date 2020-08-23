@@ -28,15 +28,15 @@ const UserProvider = (props) => {
     const token = sessionStorage.getItem(configs.TokenSession)
     let object = sessionStorage.getItem(configs.ObjectSession) || {}
     if (!token) return null
-    user = JSON.parse(
+    object = JSON.parse(
       Buffer.from(String(token).split('.')[1], 'base64').toString()
     )
-    user = { ...user, ...object }
-    sessionStorage.setItem(configs.ObjectSession, JSON.stringify(user))
-    return user
+    object = { ...user, ...object }
+    sessionStorage.setItem(configs.ObjectSession, JSON.stringify(object))
+    return object
   }
 
-  const value = { user: user }
+  const value = { user }
   return <Provider value={value}>{props.children}</Provider>
 }
 

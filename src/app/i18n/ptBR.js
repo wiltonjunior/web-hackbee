@@ -7,7 +7,7 @@ export default {
 
   SIDERBAR_EXIT: 'Sair',
   CHAT_CARDCLIENT_PHONE: 'Telefone',
-  CHAT_CARDCLIENT_CITY: 'Cidade',
+  CHAT_CARDCLIENT_CPF: 'Cpf',
   CHAT_CARDCLIENT_GENDER: 'Gênero',
   CHAT_CARDCLIENT_COMMENTS: 'Observações',
   CHAT_INPUT_SEND_SEND: 'Enviar',

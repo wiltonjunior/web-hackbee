@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
-import { IconButton } from '@material-ui/core'
+import React, { useState, useRef } from 'react'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
 import Icon from '@components/Icon'
 import Table from '@components/Table'
 import Button from '@components/Button'
-import ConfirmModal from '@components/ConfirmModal'
+import Modal from '@components/Modal'
+import Input from '@components/Input'
+import UserUtils from '@utils/userUtils'
 
 import Header from './components/Header'
-
-import array from './data.js'
 
 import './styles.scss'
 
 const List = (props) => {
+  const text = useRef(null)
+
   const [open, setOpen] = useState(false)
 
-  const { setUser } = props
+  const { setUser, data = [] } = props
 
   const headers = [
     {
@@ -23,22 +25,8 @@ const List = (props) => {
       field: 'name'
     },
     {
-      name: 'Canal',
-      field: 'channel'
-    },
-    {
-      name: 'Avaliação',
-      field: 'note'
-    },
-    {
-      name: 'Opção',
-      component: () => {
-        return (
-          <IconButton onClick={toggle}>
-            <Icon size={30} name="delete" />
-          </IconButton>
-        )
-      }
+      name: 'Email',
+      field: 'email'
     }
   ]
 
@@ -50,34 +38,63 @@ const List = (props) => {
     setOpen(!open)
   }
 
+  const copyToClipboard = (e) => {
+    text.current.select()
+    document.execCommand('copy')
+    e.target.focus()
+  }
+
   const actions = () => {
     return (
       <div className="buttons_modal">
         <Button basic onClick={toggle}>
           Cancelar
         </Button>
-        <Button background="#FC5A5A" icon={() => <Icon name="trash" />}>
-          Excluir usuário
+        <Button
+          onClick={copyToClipboard}
+          icon={() => <Icon size={16} name="copy" />}
+        >
+          Copiar
         </Button>
       </div>
     )
   }
 
+  const getUrl = () => {
+    const url = process.env.REACT_APP_URL
+    const user = UserUtils.getUser()
+    return `${url}/${user.cliente_id}`
+  }
+
   return (
     <div className="List">
       <div className="list-header">
-        <Header />
+        <Header onClick={toggle} />
       </div>
       <div className="list-main">
-        <Table onClick={getUser} headers={headers} data={array} />
+        <Table onClick={getUser} headers={headers} data={data} />
       </div>
-      <ConfirmModal
+
+      <Modal
         open={open}
         close={toggle}
-        actions={actions}
-        title="Tem certeza disto?"
-        subtitle="Você tem certeza que deseja remover esse usuário, caso exclua, todos os dados relacionados a ele excluídos."
-      />
+        title="Convidar usuário"
+        actions={() => actions()}
+        subtitle="Insira o endereço do usuário que deseja convidar"
+      >
+        <Input
+          shrink
+          ref={text}
+          label="Link"
+          name="name"
+          value={getUrl()}
+          startAdornment={
+            <InputAdornment position="start">
+              <Icon size={30} name="link" />
+            </InputAdornment>
+          }
+        />
+      </Modal>
     </div>
   )
 }

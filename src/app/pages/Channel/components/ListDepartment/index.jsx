@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { IconButton } from '@material-ui/core'
 import InputAdornment from '@material-ui/core/InputAdornment'
 
 import Axios from '@components/Axios'
@@ -8,7 +7,6 @@ import Modal from '@components/Modal'
 import Input from '@components/Input'
 import Icon from '@components/Icon'
 import Button from '@components/Button'
-import UserUtils from '@utils/userUtils'
 
 import Header from './components/Header'
 
@@ -31,21 +29,6 @@ const ListDepartment = (props) => {
       name: 'Nome',
       field: 'name'
     }
-    // {
-    //   name: 'Opção',
-    //   component: () => {
-    //     return (
-    //       <div>
-    //         <IconButton onClick={toggle}>
-    //           <Icon size={30} name="edit" />
-    //         </IconButton>
-    //         <IconButton onClick={toggle}>
-    //           <Icon size={30} name="delete" />
-    //         </IconButton>
-    //       </div>
-    //     )
-    //   }
-    // }
   ]
 
   const getUser = (user) => {

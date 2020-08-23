@@ -1,36 +1,23 @@
 import React from 'react'
 import Table from '@components/Table'
 
-import array from './data.js'
 import Header from './components/Header'
 
 import './styles.scss'
 
-const List = () => {
+const List = ({ departamentos = [] }) => {
   const headers = [
     {
       name: 'Nome',
       field: 'name'
     },
     {
-      name: 'Esperando',
-      field: 'waiting'
+      name: 'Status',
+      field: 'status'
     },
     {
-      name: 'Em andamento',
-      field: 'inProgress'
-    },
-    {
-      name: 'Finalizados',
-      field: 'finish'
-    },
-    {
-      name: 'TME',
-      field: 'tme'
-    },
-    {
-      name: 'TMA',
-      field: 'tma'
+      name: 'Conversas',
+      field: 'conversations_count'
     }
   ]
 
@@ -40,7 +27,7 @@ const List = () => {
         <Header />
       </div>
       <div className="list-main">
-        <Table headers={headers} data={array} />
+        <Table headers={headers} data={departamentos} />
       </div>
     </div>
   )

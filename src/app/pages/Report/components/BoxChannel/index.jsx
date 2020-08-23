@@ -5,32 +5,33 @@ import CardChannel from './components/CardChannel'
 
 import './styles.scss'
 
-const BoxChannel = () => {
+const BoxChannel = ({ status = {} }) => {
+  const { conversations = [] } = status
+
+  const one = conversations.find((item) => item.status === '01') || {}
+  const two = conversations.find((item) => item.status === '02') || {}
+  const three = conversations.find((item) => item.status === '03') || {}
+
   const array = [
     {
       icon: 'dot',
       title: 'Esperando',
-      content: () => <div className="number">180</div>
+      content: () => <div className="number">{one.quantidade}</div>
     },
     {
       icon: 'comment',
       title: 'Em atendimento',
-      content: () => <div className="number">85</div>
+      content: () => <div className="number">{two.quantidade}</div>
     },
     {
       icon: 'task',
       title: 'Finalizados',
-      content: () => <div className="number">254</div>
+      content: () => <div className="number">{three.quantidade || 0}</div>
     },
     {
       icon: 'clock',
-      title: 'TME e TMA',
-      content: () => (
-        <div className="time">
-          <p>00:55:14</p>
-          <p>00:22:15</p>
-        </div>
-      )
+      title: 'Agentes',
+      content: () => <div className="number">{status.agentes}</div>
     }
   ]
 

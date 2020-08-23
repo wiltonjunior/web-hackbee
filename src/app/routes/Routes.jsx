@@ -7,16 +7,18 @@ import Report from '@pages/Report'
 import Users from '@pages/Users'
 import Clients from '@pages/Clients'
 import Channel from '@pages/Channel'
+import Invitation from '@pages/Invitation'
 
 import NotFount from '@pages/NotFount'
 
-import {UserValidate, UserConsumer } from '@contexts/User'
+import { UserValidate, UserConsumer } from '@contexts/User'
 
 import Layout from '@components/Layout'
 
 export default () => (
   <Switch>
     <Route path="/login" component={Login} />
+    <Route exact path="/invitation/:cliente_id" component={Invitation} />
     <Route path="/">
       {(props) => (
         <UserConsumer>

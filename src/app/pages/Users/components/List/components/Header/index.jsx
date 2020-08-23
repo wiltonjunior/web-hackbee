@@ -1,17 +1,15 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 
+import Icon from '@components/Icon'
 import Input from '@components/Input'
 import Filter from '@components/Filter'
 import Button from '@components/Button'
-import Icon from '@components/Icon'
 
 import './styles.scss'
 
-const Header = () => {
-  const array = [
-    { label: 'Todos', value: 'ALL' }
-  ]
+const Header = ({ onClick }) => {
+  const array = [{ label: 'Todos', value: 'ALL' }]
   return (
     <div className="Header">
       <Grid container spacing={3}>
@@ -41,7 +39,9 @@ const Header = () => {
           />
         </Grid>
         <Grid item className="header_select">
-          <Button icon={() => <Icon name="plus" />}>Novo usuário</Button>
+          <Button onClick={onClick} icon={() => <Icon name="plus" />}>
+            Novo usuário
+          </Button>
         </Grid>
       </Grid>
     </div>

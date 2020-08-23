@@ -5,7 +5,7 @@ export default {
         url: 'clientes'
       },
       users: {
-        url: 'user'
+        url: 'users'
       },
       login: {
         url: 'login'
@@ -15,6 +15,27 @@ export default {
       },
       departments: {
         url: 'departments'
+      },
+      register: {
+        url: 'register'
+      },
+      report: {
+        url: 'relatorios',
+        status: {
+          url: 'relatorios/status'
+        },
+        top: {
+          url: 'relatorios/top'
+        },
+        departamentos: {
+          url: 'relatorios/departamentos'
+        },
+        conversations: {
+          url: 'relatorios/conversations'
+        }
+      },
+      conversations: {
+        url: 'conversations'
       }
     }
   },
