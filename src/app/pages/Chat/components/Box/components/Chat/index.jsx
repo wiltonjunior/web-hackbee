@@ -15,6 +15,7 @@ const Chat = (props) => {
   useEffect(() => {
     if (item) {
       getChat()
+      updateChannel(item)
     }
   }, [item])
 
@@ -23,8 +24,12 @@ const Chat = (props) => {
     http({
       api: 'conversations',
       method: 'put',
-      params: { agente_id: user.id, status: '02' },
-      others: item.conversationId
+      params: {
+        status: '02',
+        agente_id: user.id,
+        conversation_id: item.conversation_id
+      },
+      others: item.id
     })
   }
 
@@ -36,8 +41,6 @@ const Chat = (props) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        photoUrl:
-          'http://dmssolutions.nl/wp-content/uploads/2013/06/helpdesk.png',
         welcomeMessage: 'Bem vindo ao Tok'
       })
 
